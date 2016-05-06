@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name='viewport' content='initial-scale=1' />
+        
+        <style>
+            [hidden]{
+                display: none !important;
+            }
+            
+            html, body{
+                margin: 0;
+                padding: 0;
+                
+                width: 100%;
+                height: 100%;
+            }
+            
+            body{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                
+                background-color: beige;
+            }
+            
+            #scene{
+                height: 400px;
+                width: 400px;
+                
+                position: relative;
+                
+                background: white;
+            }
+            
+            #scene .lutin{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100px;
+                height: 100px;
+                background-size: cover;
+            }
+            
+            #scene .lutin[data-text]::before{
+                content: attr(data-text);
+                border-radius: 2em;
+                border: 5px solid #EEE;
+                padding: 1em;
+                font-size: 10px;
+                
+                background: white;
+                
+                white-space: nowrap;
+                
+                position: absolute;
+                transform: translateY(-50%) translateX(50%);
+            }
+            
+        </style>
+
+        
+        
+        <title> Scratch.js </title>
+
+
+    </head>
+    
+    <body>
+        <div id='scene'></div>
+        
+        <script src="scratch.js"> </script> 
+        
+        <script>
+            var david = new Lutin("https://avatars1.githubusercontent.com/u/165829?v=3&s=460");
+            var romain = new Lutin("https://avatars2.githubusercontent.com/u/8417814?v=3&s=400");
+            
+            david.avancer(100); 
+            david.orienter(-45);
+            
+            david.avancer(50); 
+            david.dire('on est pas énervés !');
+
+            /*david.quand_collision(romain, function(){
+                david.dire('Yo !')
+            });
+            */
+            
+            david.quand_touche('droite', function(){
+                david.avancer(10);
+            });
+            david.quand_touche('haut', function(){
+                david.avancer(10);
+            });
+            david.quand_touche('bas', function(){
+                david.avancer(10);
+            });
+            david.quand_touche('gauche', function(){
+                david.avancer(10);
+            });
+
+            /*david.quand_clic(function(){})
+
+            david.quand_recoit(function(){})
+
+            david.cacher();
+            david.montrer();*/
+        
+        </script>
+    </body>
+</html>
